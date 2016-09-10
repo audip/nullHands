@@ -14,6 +14,12 @@ class ViewController: UIViewController {
     
     var ref: FIRDatabaseReference!
     
+    @IBOutlet weak var xValue: UILabel!
+    @IBOutlet weak var yValue: UILabel!
+    
+    var xCalib : Double!
+    var yCalib : Double!
+    
     var manager: CMMotionManager = CMMotionManager()
     var attitude: CMAttitude = CMAttitude()
     var motion: CMDeviceMotion = CMDeviceMotion()
@@ -22,19 +28,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.xCalib = 0.0
+        self.yCalib = 0.0
+        
         self.ref = FIRDatabase.database().reference()
 
         manager.deviceMotionUpdateInterval = 0.01
-        manager.startDeviceMotionUpdates(to: OperationQueue.current!, withHandler:{
+        manager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler:{
             deviceManager, error in
             self.motion = self.manager.deviceMotion!
             self.attitude = self.motion.attitude
-            self.ref.child("gyro").setValue(["x": self.attitude.yaw,
-                                             "y": self.attitude.pitch,
-                                             "z": self.attitude.roll])
+            
+            //self.attitude.multiply(byInverseOf: self.referenceAttitude!)
+            
+            self.ref.child("gyro").setValue(["x": String(format: "%.10f", self.attitude.pitch - self.xCalib),
+                                             "y": String(format: "%.10f", self.attitude.roll - self.yCalib)])
+            self.xValue.text = "x: " + String(format: "%.10f", self.attitude.pitch - self.xCalib)
+            self.yValue.text = "y: " + String(format: "%.10f", self.attitude.roll - self.yCalib)
         })
-        
-        print(manager.isDeviceMotionActive)
+
+    }
+    
+    @IBAction func gyroCalibration(_ sender: AnyObject) {
+        self.xCalib = self.attitude.pitch
+        self.yCalib = self.attitude.roll
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

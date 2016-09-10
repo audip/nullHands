@@ -1,26 +1,101 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="nullHands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrO-fh-60U">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHz-kM-5dd">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="93" id="qhf-4L-O3v"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc0-eP-dsF">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="99" id="1jJ-aG-Nm7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="DHz-kM-5dd" firstAttribute="bottom" secondItem="ZrO-fh-60U" secondAttribute="bottomMargin" id="7WL-u9-5oK"/>
+                                    <constraint firstItem="DHz-kM-5dd" firstAttribute="baseline" secondItem="qc0-eP-dsF" secondAttribute="baseline" id="SM5-lo-9oW"/>
+                                    <constraint firstItem="DHz-kM-5dd" firstAttribute="leading" secondItem="ZrO-fh-60U" secondAttribute="leadingMargin" id="hub-E3-rur"/>
+                                    <constraint firstItem="qc0-eP-dsF" firstAttribute="trailing" secondItem="ZrO-fh-60U" secondAttribute="trailingMargin" id="kht-OL-X4i"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e99-zL-1F4" userLabel="Gyro Calibration">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Ab1-8c-3U2"/>
+                                </constraints>
+                                <state key="normal" title="Gyro Calibration"/>
+                                <connections>
+                                    <action selector="gyroCalibration:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TOL-eq-ifL"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn6-7e-1fA">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epd-Zj-9lQ">
+                                        <state key="normal" title="Microphone" image="microphone"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="epd-Zj-9lQ" firstAttribute="top" secondItem="Rn6-7e-1fA" secondAttribute="top" id="8Q0-Hu-i49"/>
+                                    <constraint firstAttribute="bottom" secondItem="epd-Zj-9lQ" secondAttribute="bottom" id="sU1-T8-cjQ"/>
+                                    <constraint firstItem="epd-Zj-9lQ" firstAttribute="leading" secondItem="Rn6-7e-1fA" secondAttribute="leading" constant="-14" id="u4q-i0-uNk"/>
+                                    <constraint firstAttribute="trailing" secondItem="epd-Zj-9lQ" secondAttribute="trailing" id="yjo-S4-1XX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="e99-zL-1F4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2df-6d-OVh"/>
+                            <constraint firstItem="e99-zL-1F4" firstAttribute="top" secondItem="Rn6-7e-1fA" secondAttribute="top" id="6yS-mf-Bkk"/>
+                            <constraint firstItem="ZrO-fh-60U" firstAttribute="leading" secondItem="e99-zL-1F4" secondAttribute="leading" id="BbE-s8-j0Z"/>
+                            <constraint firstAttribute="trailing" secondItem="Rn6-7e-1fA" secondAttribute="trailing" id="IRV-Ns-bgj"/>
+                            <constraint firstItem="e99-zL-1F4" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Nvp-rT-xOF"/>
+                            <constraint firstItem="ZrO-fh-60U" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="PPy-6o-zeL"/>
+                            <constraint firstItem="e99-zL-1F4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TYi-d8-Bvk"/>
+                            <constraint firstItem="Rn6-7e-1fA" firstAttribute="leading" secondItem="ZrO-fh-60U" secondAttribute="trailing" constant="8" symbolic="YES" id="UNC-uO-yx9"/>
+                            <constraint firstItem="e99-zL-1F4" firstAttribute="top" secondItem="ZrO-fh-60U" secondAttribute="top" id="W5D-zs-xSP"/>
+                            <constraint firstItem="Rn6-7e-1fA" firstAttribute="leading" secondItem="e99-zL-1F4" secondAttribute="trailing" constant="8" symbolic="YES" id="ko0-59-dvc"/>
+                            <constraint firstItem="Rn6-7e-1fA" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="wuy-fz-iPF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="xValue" destination="DHz-kM-5dd" id="Tba-4h-qp2"/>
+                        <outlet property="yValue" destination="qc0-eP-dsF" id="9Rf-mU-Zxx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139.880059970015" y="120.8"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="microphone" width="398" height="398"/>
+    </resources>
 </document>
