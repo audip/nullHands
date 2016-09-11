@@ -7,5 +7,5 @@ target 'nullHands' do
 
   # Pods for nullHands
   pod 'Firebase/Database'
-
+  pod 'AFNetworking', '~> 2.5'
 end
