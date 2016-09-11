@@ -17,10 +17,16 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, StreamDelega
     
     var ref: FIRDatabaseReference!
     
+    @IBOutlet weak var gyroButton: UIButton!
+    
     @IBOutlet weak var xValue: UILabel!
     @IBOutlet weak var yValue: UILabel!
     
     @IBOutlet weak var microphoneButton: UIButton!
+    
+    let defaultDuration = 3.0
+    let defaultDamping = 0.25
+    let defaultVelocity = 2.5
     
     var xCalib : Double!
     var yCalib : Double!
@@ -68,6 +74,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, StreamDelega
             let encodedDataArray = [UInt8](s.utf8)
             self.outStream?.write(encodedDataArray, maxLength: encodedDataArray.count)
         }
+        
+        animateButton()
         
         microphoneButton.isEnabled = false
         
@@ -257,6 +265,22 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, StreamDelega
         default:
             print("Unknown")
         }
+    }
+    
+    func animateButton() {
+        self.gyroButton.imageView?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        
+        UIView.animate(withDuration: defaultDuration,
+                                   delay: 0,
+                                   usingSpringWithDamping: CGFloat(defaultDamping),
+                                   initialSpringVelocity: CGFloat(defaultVelocity),
+                                   options: UIViewAnimationOptions.allowUserInteraction,
+                                   animations: { self.gyroButton.imageView?.transform = CGAffineTransform.identity
+            },
+                                   completion: { finished in
+                                    self.animateButton()
+            }
+        )
     }
 
     override func didReceiveMemoryWarning() {

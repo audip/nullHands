@@ -99,6 +99,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gyroButton" destination="e99-zL-1F4" id="CY7-ez-nQo"/>
                         <outlet property="microphoneButton" destination="epd-Zj-9lQ" id="aO9-gb-1bs"/>
                         <outlet property="xValue" destination="DHz-kM-5dd" id="Tba-4h-qp2"/>
                         <outlet property="yValue" destination="qc0-eP-dsF" id="9Rf-mU-Zxx"/>
